@@ -49,4 +49,12 @@ echo "checking installed ansible-version"
 ansible_versions=$(ansible --version)
 
 validateCmndStatus $? "version $ansible_versions"
+
+echo "Ansible installed.."
+
+echo "Installing boto3 module.."
+
+apt-get install python3-pip -y  >> $logfile
+
+validateCmndStatus $? "installing python3-pip"
 exit 0

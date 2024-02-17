@@ -13,6 +13,8 @@ logfile="Ansible-installaion-on-$getdate.log"
 
 touch $logfile
 
+awscli="https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"
+
 
 
 validateCmndStatus(){
@@ -67,6 +69,38 @@ echo "Installing boto3"
 pip3 install boto3
 
 validateCmndStatus $? "installing boto3"
+
+apt-get update -y >> $logfile
+
+validateCmndStatus $? "updating packages before installing aws-cli "
+
+echo "installing unzip"
+
+apt-get install unzip -y  >> $logfile
+
+validateCmndStatus $? "installing unzip is "
+
+echo "installing aws cli"
+
+curl $awscli -o "awscliv2.zip"  >> $logfile
+
+validateCmndStatus $? "importing aws cli file using curl"
+#-o to -over-write
+unzip -o awscliv2.zip >> $logfile
+
+validateCmndStatus $? "unzipping awscli is" 
+
+echo "install in the newly unzipped aws directory. By default, the files are all installed to /usr/local/aws-cli, and a symbolic link is created in /usr/local/bin"
+ 
+ #--update 
+ ./aws/install --update >> $logfile
+
+validateCmndStatus $? "creating symbolic link is "
+
+echo "awscli-installed, checking aws cli version"
+
+aws_cli_version=$(aws --version) 
+
 
 echo "executing python script to get private ips "
 

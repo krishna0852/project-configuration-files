@@ -54,6 +54,10 @@ echo "Ansible installed.."
 
 echo "Installing boto3 module.."
 
+# Set debconf frontend to noninteractive to suppress prompts
+# it's aksing to restart services while installing python3-module, below export will do it in non-interactive mode
+export DEBIAN_FRONTEND=noninteractive
+
 apt-get install python3-pip -y  >> $logfile
 
 validateCmndStatus $? "installing python3-pip"

@@ -10,7 +10,7 @@ ec2=sess.resource("ec2")
 
 
 def getPrivateipOnTags():
-    instance_names=['master','pract-cluster-spot-nodes-Node'] 
+    instance_names=['Jforg','Sonar-qube'] 
     for instance_name in instance_names:
           print('filtering started: ')
           instances=ec2.instances.filter(Filters=[

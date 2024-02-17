@@ -104,6 +104,6 @@ aws_cli_version=$(aws --version)
 
 echo "executing python script to get private ips "
 
-python3 getprivateips.py
+python3 /home/ubuntu/project-configuration-files/getprivateips.py
 
 exit 0

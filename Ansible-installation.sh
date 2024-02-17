@@ -68,4 +68,8 @@ pip3 install boto3
 
 validateCmndStatus $? "installing boto3"
 
+echo "executing python script to get private ips "
+
+python3 getprivateips.py
+
 exit 0
